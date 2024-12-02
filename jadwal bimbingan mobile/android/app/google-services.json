@@ -1,0 +1,125 @@
+{
+  "project_info": {
+    "project_number": "271612060907",
+    "firebase_url": "https://firm-moonlight-420708-default-rtdb.firebaseio.com",
+    "project_id": "firm-moonlight-420708",
+    "storage_bucket": "firm-moonlight-420708.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271612060907:android:bb5a2dc05ad154f15d8aae",
+        "android_client_info": {
+          "package_name": "com.certificate.dayto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQqSaoR4Y0ecZG7WY00Susj48Vaifxk7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271612060907:android:655a593dd6f894475d8aae",
+        "android_client_info": {
+          "package_name": "com.example.bim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQqSaoR4Y0ecZG7WY00Susj48Vaifxk7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271612060907:android:8656ce3bfd9ea0f05d8aae",
+        "android_client_info": {
+          "package_name": "com.example.bimbingan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQqSaoR4Y0ecZG7WY00Susj48Vaifxk7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271612060907:android:f953d44de3b4bfd35d8aae",
+        "android_client_info": {
+          "package_name": "com.example.recipe_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQqSaoR4Y0ecZG7WY00Susj48Vaifxk7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271612060907:android:ad5f3319330a5d9e5d8aae",
+        "android_client_info": {
+          "package_name": "com.jojo.firebase_recipe_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQqSaoR4Y0ecZG7WY00Susj48Vaifxk7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271612060907:android:8bdc556aae4ea50c5d8aae",
+        "android_client_info": {
+          "package_name": "com.zeekands.firebase_food_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQqSaoR4Y0ecZG7WY00Susj48Vaifxk7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
