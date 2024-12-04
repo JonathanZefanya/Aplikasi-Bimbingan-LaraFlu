@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
   final Dio _dio = Dio(BaseOptions(
-    baseUrl: 'http://127.0.0.1:8000/api',
+    baseUrl: 'https://bimbingan.jojo.tirtagt.xyz/api',
   ));
 
   // AUTH

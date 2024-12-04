@@ -15,6 +15,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final ApiService _apiService = ApiService();
 
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   void _login() async {
     if (_formKey.currentState!.validate()) {
       try {
@@ -33,20 +41,16 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushReplacementNamed(
                 context, '/${response.data['data']['level']}/home');
           } else {
-            // Login berhasil
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Email atau password anda salah')),
             );
           }
-          // Navigasi ke halaman berikutnya
         } else {
-          // Login gagal
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Login gagal, hubungi admin')),
+            const SnackBar(content: Text('Login gagal, hubungi admin')),
           );
         }
       } catch (e) {
-        // Kesalahan jaringan atau lainnya
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Error: $e')),
         );
@@ -91,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
+                        offset: Offset(0, 3),
                       ),
                     ],
                   ),
@@ -125,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
+                        offset: Offset(0, 3),
                       ),
                     ],
                   ),
@@ -138,10 +142,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       prefixIcon: const Icon(Icons.lock),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: _togglePasswordVisibility,
+                      ),
                       filled: true,
                       fillColor: Colors.white,
                     ),
-                    obscureText: true,
+                    obscureText: _obscureText,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your password';
@@ -154,7 +166,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Process login
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Processing Login')),
                       );
@@ -163,8 +174,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                   child: const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 50.0, vertical: 15.0),
                     child: Text(
                       'Login',
                       style: TextStyle(fontSize: 18.0, color: Colors.white),

@@ -95,7 +95,7 @@ class _HomeMahasiswaScreenState extends State<HomeMahasiswaScreen> {
     return Scaffold(
       backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
-        title: const Text('APBS'),
+        title: const Text('Mahasiswa'),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),

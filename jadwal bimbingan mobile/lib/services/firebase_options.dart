@@ -48,4 +48,23 @@ class DefaultFirebaseOptions {
         );
     }
   }
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCQqSaoR4Y0ecZG7WY00Susj48Vaifxk7w',
+    appId: '1:271612060907:android:655a593dd6f894475d8aae',
+    messagingSenderId: '271612060907',
+    projectId: 'firm-moonlight-420708',
+    databaseURL: 'https://firm-moonlight-420708-default-rtdb.firebaseio.com',
+    storageBucket: 'firm-moonlight-420708.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAXjL8F9TUTmLPZfbekrMHJp1eWXQcU9uE',
+    appId: '1:271612060907:ios:518534504731a4d15d8aae',
+    messagingSenderId: '271612060907',
+    projectId: 'firm-moonlight-420708',
+    databaseURL: 'https://firm-moonlight-420708-default-rtdb.firebaseio.com',
+    storageBucket: 'firm-moonlight-420708.appspot.com',
+    iosBundleId: 'com.example.bimbingan',
+  );
 }

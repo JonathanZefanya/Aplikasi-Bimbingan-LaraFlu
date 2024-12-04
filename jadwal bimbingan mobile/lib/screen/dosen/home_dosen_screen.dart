@@ -130,7 +130,7 @@ class _HomeDosenScreenState extends State<HomeDosenScreen> {
     return Scaffold(
       backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
-        title: const Text('APBS'),
+        title: const Text('Dosen'),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
