@@ -20,3 +20,5 @@ Route::post('/daftar-bimbingan-dosen', [ApiController::class, 'daftarBimbinganDo
 Route::post('/add-date-dosen', [ApiController::class, 'addDateDosen']);
 Route::post('/edit-date-dosen', [ApiController::class, 'editDateDosen']);
 Route::post('/delete-date-dosen', [ApiController::class, 'deleteDateDosen']);
+Route::post('mark-schedule-as-done', [ApiController::class, 'markScheduleAsDone']);
+Route::post('/add-mahasiswa-dosen', [ApiController::class, 'addMahasiswaDosen']);

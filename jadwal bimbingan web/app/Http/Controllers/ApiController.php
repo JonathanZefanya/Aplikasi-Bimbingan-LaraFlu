@@ -146,4 +146,22 @@ class ApiController extends Controller
         return new ApiResource(true, 'success', null);
 
     }
+
+    public function markScheduleAsDone(Request $request) {
+        $riwayatBimbingan = RiwayatBimbingan::find($request->id);
+        $riwayatBimbingan->riwayat_bimbingan_status = true;
+        $riwayatBimbingan->save();
+        return new ApiResource(true, 'success', $riwayatBimbingan);
+    }
+
+    public function addMahasiswaDosen(Request $request) {
+        $user = User::with('dosen')->where('username', $request->username)->first();
+        $dosen = Dosen::where('user_id', $user->user_id)->first();
+        $mahasiswa = Mahasiswa::where('mahasiswa_nim', $request->nim)->first();
+        $bimbingan = new Bimbingan();
+        $bimbingan->dosen_id = $dosen->dosen_id;
+        $bimbingan->mahasiswa_id = $mahasiswa->mahasiswa_id;
+        $bimbingan->save();
+        return new ApiResource(true, 'success', $bimbingan);
+    }
 }

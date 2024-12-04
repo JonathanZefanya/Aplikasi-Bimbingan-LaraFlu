@@ -246,5 +246,38 @@ class ApiService {
     }
   }
 
-  
+  Future<Response> markScheduleAsDone(String? id) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final response = await _dio.post('/mark-schedule-as-done',
+          data: {'id': id});
+      return response;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        // Server responded with an error
+        return e.response!;
+      } else {
+        // Request failed due to network or other issues
+        throw Exception('Network error: ${e.message}');
+      }
+    }
+  }
+
+  Future<Response> addStudentToSchedule(
+      String? id, String? username) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final response = await _dio.post('/add-mahasiswa-dosen',
+          data: {'id': id, 'username': username});
+      return response;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        // Server responded with an error
+        return e.response!;
+      } else {
+        // Request failed due to network or other issues
+        throw Exception('Network error: ${e.message}');
+      }
+    }
+  }
 }

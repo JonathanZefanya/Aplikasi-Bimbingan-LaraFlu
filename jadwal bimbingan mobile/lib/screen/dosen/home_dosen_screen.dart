@@ -365,6 +365,74 @@ class _JadwalViewState extends State<JadwalView> {
     }
   }
 
+  Future<void> _markAsDone(String id) async {
+  final response = await _apiService.markScheduleAsDone(id);
+
+  if (response.data['success']) {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text('Jadwal berhasil ditandai selesai!'),
+      duration: Duration(seconds: 2),
+      backgroundColor: Colors.green,
+    ));
+    setState(() {
+      _jadwalFuture = _fetchJadwalBimbingan();
+    });
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text('Terjadi kesalahan saat menandai selesai!'),
+      duration: Duration(seconds: 2),
+      backgroundColor: Colors.red,
+    ));
+  }
+}
+
+Future<void> _addStudentToSchedule(String id) async {
+  TextEditingController studentController = TextEditingController();
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Tambah Mahasiswa'),
+        content: TextField(
+          controller: studentController,
+          decoration: InputDecoration(labelText: 'Nama Mahasiswa'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Batal'),
+          ),
+          TextButton(
+            onPressed: () async {
+              final response = await _apiService.addStudentToSchedule(
+                id,
+                studentController.text,
+              );
+              Navigator.pop(context);
+
+              if (response.data['success']) {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('Mahasiswa berhasil ditambahkan!'),
+                  duration: Duration(seconds: 2),
+                  backgroundColor: Colors.green,
+                ));
+                setState(() {
+                  _jadwalFuture = _fetchJadwalBimbingan();
+                });
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('Terjadi kesalahan saat menambah mahasiswa!'),
+                  duration: Duration(seconds: 2),
+                  backgroundColor: Colors.red,
+                ));
+              }
+            },
+            child: Text('Simpan'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -447,10 +515,21 @@ class _JadwalViewState extends State<JadwalView> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
+                        icon: Icon(Icons.done),
+                        onPressed: () {
+                          _markAsDone(jadwal['jadwal_dosen_id'].toString());
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.person_add),
+                        onPressed: () {
+                          _addStudentToSchedule(jadwal['jadwal_dosen_id'].toString());
+                        },
+                      ),
+                      IconButton(
                         icon: Icon(Icons.edit),
                         onPressed: () {
-                          _pickDateTimeRange(
-                              context, jadwal['jadwal_dosen_id'].toString());
+                          _pickDateTimeRange(context, jadwal['jadwal_dosen_id'].toString());
                         },
                       ),
                       IconButton(
@@ -460,18 +539,15 @@ class _JadwalViewState extends State<JadwalView> {
                             context: context,
                             builder: (context) => AlertDialog(
                               title: Text('Konfirmasi Hapus'),
-                              content: Text(
-                                  'Apakah Anda yakin ingin menghapus jadwal ini?'),
+                              content: Text('Apakah Anda yakin ingin menghapus jadwal ini?'),
                               actions: [
                                 TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
+                                  onPressed: () => Navigator.pop(context),
                                   child: Text('Batal'),
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    Navigator.of(context).pop();
+                                    Navigator.pop(context);
                                     _deleteSchedule(jadwal['jadwal_dosen_id']);
                                   },
                                   child: Text('Hapus'),
